@@ -1,0 +1,34 @@
+<input id="num1" type="number" placeholder="peso">
+<input id="num2" type="number" placeholder="altura">
+
+<button onclick="calcularIMC()">Calcular IMC</button>
+
+<p id="imc"></p>
+
+<script>
+    function calcularIMC() {
+        let peso = parseFloat(document.getElementById("num1").value);
+        let altura = parseFloat(document.getElementById("num2").value);
+
+        let resultado = peso / (altura * altura);
+
+        let classificacao = "";
+
+        if (resultado < 18.5) {
+            classificacao = "Abaixo do peso";
+        } else if (resultado <= 24.9) {
+            classificacao = "Peso normal";
+        } else if (resultado <= 29.9) {
+            classificacao = "Sobrepeso";
+        } else if (resultado <= 34.9) {
+            classificacao = "Obesidade grau I";
+        } else if (resultado <= 39.9) {
+            classificacao = "Obesidade grau II";
+        } else {
+            classificacao = "Obesidade grau III";
+        }
+
+        document.getElementById("imc").textContent =
+            "IMC: " + resultado.toFixed(2) + " - " + classificacao;
+    }
+</script>
